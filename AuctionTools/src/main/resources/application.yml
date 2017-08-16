@@ -1,0 +1,13 @@
+server:
+  port: 8765
+
+stc:
+  rest:
+    client:
+      base-uri: https://preprod.stc.com.sa/stcesb/stcrs2
+      username: estore
+      password: Ljsitne80
+      user-agent: estore;Windows NT 5.1;Default;default
+      language: en
+      connectTimeout: 20000
+      readTimeout: 120000
