@@ -1,33 +1,42 @@
 package com.stc.AuctionTools.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.stc.AuctionTools.services.UserService;
 
-@RestController
+@Controller
 public class UserController {
 
 	@Autowired
 	public UserService userService;
 	
 	
-	@RequestMapping(value="/user/deleteuser/{userId}", method=RequestMethod.DELETE, produces = MediaType.TEXT_HTML_VALUE)
-	public String deleteUser(@PathVariable("userId") String userId)
+	@ResponseBody
+	@RequestMapping(value="/user/deleteuser", method=RequestMethod.DELETE, produces = MediaType.TEXT_HTML_VALUE)
+	public String deleteUser(@RequestParam("username") String username, @RequestParam("password") String password)
 	{
-		String result = userService.deleteUserById(userId);
+		
+		String result = userService.deleteUserByUsernameAndPassword(username, password);
 		if("success".equals(result))
 		{
-			return "successfully deleted user with id " + userId;
+			return "success";
 		}
 		else
 		{
-			return "error encountered while deleting user";
+			return "error";
 		}
+	}
+	
+	@RequestMapping(value="/user/deleteuser",method=RequestMethod.GET)
+	public String showDeleteUser(Model model)
+	{
+		return "deleteuser";
 	}
 }

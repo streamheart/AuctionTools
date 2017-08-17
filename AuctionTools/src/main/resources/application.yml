@@ -1,6 +1,5 @@
 server:
   port: 8765
-
 stc:
   rest:
     client:
