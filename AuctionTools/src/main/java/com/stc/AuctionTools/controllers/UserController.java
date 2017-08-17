@@ -1,7 +1,6 @@
 package com.stc.AuctionTools.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,19 +18,13 @@ public class UserController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value="/user/deleteuser", method=RequestMethod.DELETE, produces = MediaType.TEXT_HTML_VALUE)
+	@RequestMapping(value="/user/deleteuser", method=RequestMethod.DELETE)
 	public String deleteUser(@RequestParam("username") String username, @RequestParam("password") String password)
 	{
 		
 		String result = userService.deleteUserByUsernameAndPassword(username, password);
-		if("success".equals(result))
-		{
-			return "success";
-		}
-		else
-		{
-			return "error";
-		}
+		
+		return result;
 	}
 	
 	@RequestMapping(value="/user/deleteuser",method=RequestMethod.GET)

@@ -47,7 +47,7 @@ public class UserService {
 			}
 			catch (Exception e) {
 				System.out.println("error = "+e.getMessage());
-				return "error";
+				return e.getMessage();
 			}
 	
 		
