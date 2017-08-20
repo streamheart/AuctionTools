@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class UserService {
 
 	final static String resourcePath = "/private/users/{USERNAME}/ldapuser";
-
+	//change for branch testing
 	
 	@Value(value="${stc.rest.client.user-agent}")
 	String useragent;
@@ -46,7 +46,7 @@ public class UserService {
 				restTemplate.exchange(url+resourcePath,HttpMethod.DELETE, request, String.class, urlVariables);
 			}
 			catch (Exception e) {
-				System.out.println("error = "+e.getMessage());
+				System.out.println("error = " + e.getMessage());
 				return e.getMessage();
 			}
 	
