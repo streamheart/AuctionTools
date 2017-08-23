@@ -15,17 +15,18 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class UserService {
 
-	final static String resourcePath = "/private/users/{USERNAME}/ldapuser";
+	private final static String resourcePath = "/private/users/{USERNAME}/ldapuser";
 	//change for branch testing
 	
 	@Value(value="${stc.rest.client.user-agent}")
-	String useragent;
+	private String useragent;
 	@Value(value="${stc.rest.client.language}")
-	String language;
+	private String language;
 	
-	RestTemplate restTemplate = new RestTemplate();
+	
+	private RestTemplate restTemplate = new RestTemplate();
 	@Value(value = "${stc.rest.client.base-uri}")
-	String url;
+	private String url;
 	
 	@Autowired
 	UtilityServices utilityServices;
@@ -54,4 +55,42 @@ public class UserService {
 	
 		return "success";
 	}
+
+	public String getUseragent() {
+		return useragent;
+	}
+
+	public void setUseragent(String useragent) {
+		this.useragent = useragent;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public RestTemplate getRestTemplate() {
+		return restTemplate;
+	}
+
+	public void setRestTemplate(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public static String getResourcepath() {
+		return resourcePath;
+	}
+	
+	
 }
